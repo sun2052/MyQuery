@@ -1,0 +1,390 @@
+Core
+	.length : Integer
+		The number of elements in the MyQuery object.
+
+	MyQuery([selector[, context]]) : MyQuery
+	MyQuery(callback) : MyQuery
+		Return a collection of matched elements either found in the DOM based on passed argument(s) or created by passing an HTML string.
+		@params {String|Element|Array} selector
+		@params {String|Element|Array} context
+		@params {Function} callback
+
+	.get() : MyQuery
+		Retrieve the DOM elements matched by the MyQuery object.
+
+
+Traversing
+	Collection Manipulation
+		.each() : MyQuery
+			Iterate over a MyQuery object, executing a function for each matched ele...
+
+	Filtering
+		.filter() : MyQuery
+			Reduce the set of matched elements to those that match the selector or ...
+
+		.first() : MyQuery
+			Reduce the set of matched elements to the first in the set.
+
+		.last() : MyQuery
+			Reduce the set of matched elements to the final one in the set.
+
+		.slice() : MyQuery
+			Reduce the set of matched elements to a subset specified by a range of ...
+
+	Miscellaneous Traversing
+		.end() : MyQuery
+			End the most recent filtering operation in the current chain and return...
+
+	Tree Traversal
+		.find() : MyQuery
+			Get the descendants of each element in the current set of matched eleme...
+
+		.offsetParent() : MyQuery
+			Get the closest ancestor element that is positioned.
+
+		.parents() : MyQuery
+			Get the ancestors of each element in the current set of matched element...
+
+		.children() : MyQuery
+			Get the children of each element in the set of matched elements, option...
+
+		.previous() : MyQuery
+			Get the immediately preceding sibling of each element in the set of mat...
+
+		.next() : MyQuery
+			Get the immediately following sibling of each element in the set of mat...
+
+		.siblings() : MyQuery
+			Get the siblings of each element in the set of matched elements, option...
+
+
+Manipulation
+	Class Attribute
+		.hasClass(className) : Boolean
+			Determine whether any of the matched elements are assigned the given class.
+			@params {String} className
+				The class name to search for.
+
+		.addClass(className) : MyQuery
+			Adds the specified class to each of the set of matched elements.
+			@params {String} className
+				A class to be added to the class attribute of each matched element.
+
+		.removeClass(className) : MyQuery
+			Remove a class from each element in the set of matched elements.
+			@params {String} className
+				The class name to be removed.
+
+		.toggleClass(className) : MyQuery
+			Add or remove a class from each element in the set of matched elements, depending on either the class's presence.
+			@params {String} className
+				The class name to be toggled.
+
+	Copying
+		.clone() : MyQuery
+			Create a deep copy of the set of matched elements.
+
+	DOM Insertion, Around
+		.wrap() : MyQuery
+			Wrap an HTML structure around each element in the set of matched elemen...
+
+		.unwrap() : MyQuery
+			Remove the parents of the set of matched elements from the DOM, leaving...
+
+	DOM Insertion, Inside
+		.prepend() : MyQuery
+			Insert content, specified by the parameter, to the beginning of each el...
+
+		.append() : MyQuery
+			Insert content, specified by the parameter, to the end of each element ...
+
+		.prependTo() : MyQuery
+			Insert every element in the set of matched elements to the beginning of...
+
+		.appendTo() : MyQuery
+			Insert every element in the set of matched elements to the end of the t...
+
+		.html() : String
+		.html(htmlString) : MyQuery
+			Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
+			@params {String} htmlString
+
+	DOM Insertion, Outside
+		.before() : MyQuery
+			Insert content, specified by the parameter, before each element in the ...
+
+		.after() : MyQuery
+			Insert content, specified by the parameter, after each element in the s...
+
+		.insertBefore() : MyQuery
+			Insert every element in the set of matched elements before the target.
+
+		.insertAfter() : MyQuery
+			Insert every element in the set of matched elements after the target.
+
+	DOM Removal
+		.detach() : MyQuery
+			Remove the set of matched elements from the DOM.
+
+		.empty() : MyQuery
+			Remove all child nodes of the set of matched elements from the DOM.
+
+		.remove() : MyQuery
+			Remove the set of matched elements from the DOM.
+
+	DOM Replacement
+		.replace() : MyQuery
+			Replace each target element with the set of matched elements.
+
+		.replaceWith() : MyQuery
+			Replace each element in the set of matched elements with the provided n...
+
+	General Attributes
+		.attribute(attributeName) : String
+		.attribute(attributeName, value) : MyQuery
+			Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
+			@params {String} attributeName
+				The name of the attribute to get or to set.
+			@params {String|Number} value
+				The name of the attribute to set.
+
+		.removeAttribute(attributeName) : MyQuery
+			Remove an attribute from each element in the set of matched elements.
+			@params {String} attributeName
+				An attribute to be removed.
+
+		.property(propertyName) : String
+		.property(propertyName, value) : MyQuery
+			Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.
+			@params {String} propertyName
+				The name of the property to get or to set.
+			@params {String|Number|Boolean} value
+				A value to set for the property.
+
+		.removeProperty(propertyName) : MyQuery
+			Remove a property for the set of matched elements.
+			@params {String} propertyName
+				The name of the property to be removed.
+
+		.value() : String, Number, Array
+		.value(value) : MyQuery
+			Get the current value of the first element in the set of matched elements or set the value of every matched element.
+
+	Style Properties
+		.style(propertyName) : String
+		.style(propertyName, value) : MyQuery
+			Get the value of a style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.
+			@params {String} propertyName
+				A CSS property name.
+			@params {String|Number} value
+				A value to set for the property.
+
+		.height() : Integer
+			Get the current computed height for the first element in the set of matched elements or set the height of every matched element.
+
+		.width() : Integer
+			Get the current computed width for the first element in the set of matched elements or set the width of every matched element.
+
+		.innerHeight() : Integer
+			Get the current computed height for the first element in the set of matched elements, including padding but not border.
+			This method returns the height of the element, including top and bottom padding, in pixels.
+			This method is not applicable to window and document objects; for these, use .height() instead.
+
+		.innerWidth() : Integer
+			Get the current computed width for the first element in the set of matched elements, including padding but not border.
+			This method returns the width of the element, including left and right padding, in pixels.
+		This method is not applicable to window and document objects; for these, use .width() instead.
+
+		.outerHeight([includeMargin]) : Integer
+			Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.
+			The top and bottom padding and border are always included in the .outerHeight() calculation; if the includeMargin argument is set to true, the margin (top and bottom) is also included.
+			This method is not applicable to window and document objects; for these, use .height() instead.
+			@params {Boolean} includeMargin
+				A Boolean indicating whether to include the element's margin in the calculation.
+
+		.outerWidth([includeMargin]) : Integer
+			Get the current computed width for the first element in the set of matched elements, including padding and border.
+			Returns the width of the element, along with left and right padding, border, and optionally margin, in pixels.
+			If includeMargin is omitted or false, the padding and border are included in the calculation; if true, the margin is also included.
+			This method is not applicable to window and document objects; for these, use .width() instead.
+			@params {Boolean} includeMargin
+				A Boolean indicating whether to include the element's margin in the calculation.
+				.offset() : MyQuery
+			Get the current coordinates of the first element, or set the coordinate...
+
+		.position() : MyQuery
+			Get the current coordinates of the first element in the set of matched ...
+
+		.scrollTop() : MyQuery
+			Get the current vertical position of the scroll bar for the first eleme...
+
+		.scrollLeft() : MyQuery
+			Get the current horizontal position of the scroll bar for the first ele...
+
+
+Effects
+	.hide(options) : MyQuery
+		Hide the matched elements.
+
+	.show(options) : MyQuery
+		Display the matched elements.
+
+	.toggle(options) : MyQuery
+		Display or hide the matched elements.
+
+	.animate(options) : MyQuery
+		Perform a custom animation of a set of CSS properties.
+
+	.stop(options) : MyQuery
+		Stop the currently-running animation on the matched elements.
+
+Events
+	Event Handler Attachment
+		.bind(eventType, handler) : MyQuery
+			Attach a handler to an event for the elements.
+			@params {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+			@params {Function} handler(event)
+				The function to be executed each time the event is triggered.
+
+		.unbind(eventType, handler) : MyQuery
+			Remove a previously-attached event handler from the elements.
+			@param {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+			@param {Function} handler(event)
+				The function to be removed.
+
+		.trigger(eventType) : MyQuery
+			Execute all handlers and behaviors attached to the matched elements for the given event type.
+			@param {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+
+	Event Object
+		event.type
+			Describes the nature of the event.
+
+		event.target
+			The DOM element that initiated the event.
+
+		event.currentTarget
+			The current DOM element within the event bubbling phase.
+
+		event.preventDefault() : MyQuery
+			If this method is called, the default action of the event will not be ...
+
+		event.stopPropagation() : MyQuery
+			Prevents the event from bubbling up the DOM tree, preventing any parent...
+
+		event.stopImmediatePropagation() : MyQuery
+			Keeps the rest of the handlers from being executed and prevents the ev...
+
+Static Methods and Properties
+	Core 
+		.version : String
+			A string containing the MyQuery version number.
+
+	Utilities
+		MyQuery.noConflict() : MyQuery
+			Relinquish MyQuery's control of the MyQuery and $ variable.
+
+		MyQuery.each() : MyQuery
+			A generic iterator function, which can be used to seamlessly iterate ov...
+
+		MyQuery.extend() : MyQuery
+			Merge the contents of two or more objects together into the first objec...
+
+		MyQuery.inArray() : MyQuery
+			Search for a specified value within an array and return its index (or -...
+
+		MyQuery.isArray() : MyQuery
+			Determine whether the argument is an array.
+
+		MyQuery.isEmptyObject() : MyQuery
+			Check to see if an object is empty (contains no enumerable properties)....
+
+		MyQuery.isFunction() : MyQuery
+			Determine if the argument passed is a Javascript function object.
+
+		MyQuery.isNumeric() : MyQuery
+			Determines whether its argument is a number.
+
+		MyQuery.isPlainObject() : MyQuery
+			Check to see if an object is a plain object (created using \"\" or \"new...
+
+		MyQuery.isWindow() : MyQuery
+			Determine whether the argument is a window.
+
+		MyQuery.isXMLDoc() : MyQuery
+			Check to see if a DOM node is within an XML document (or is an XML docu...
+
+		MyQuery.makeArray() : MyQuery
+			Convert an array-like object into a true JavaScript array.
+
+		MyQuery.merge() : MyQuery
+			Merge the contents of two arrays together into the first array.
+
+		MyQuery.noop() : MyQuery
+			An empty function.
+
+		MyQuery.now() : MyQuery
+			Return a number representing the current time.
+
+		MyQuery.parseHTML() : MyQuery
+			Parses a string into an array of DOM nodes.
+
+		MyQuery.parseJSON() : MyQuery
+			Takes a well-formed JSON string and returns the resulting JavaScript ob...
+
+		MyQuery.parseXML() : MyQuery
+			Parses a string into an XML document.
+
+		MyQuery.trim() : MyQuery
+			Remove the whitespace from the beginning and end of a string.
+
+	Events
+		MyQuery.ready(handler) : MyQuery
+			Specify a function to execute when the DOM is fully loaded.
+			@params {Function} handler($)
+				A function to be executed after the DOM is ready.
+		MyQuery.bind(target, eventType, handler) : MyQuery
+			Attach a handler to an event for the target element.
+			@params {Element} target
+				The target element.
+			@params {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+			@params {Function} handler(event)
+				The function to be executed each time the event is triggered.
+
+		MyQuery.unbind(target, eventType, handler) : MyQuery
+			Remove a previously-attached event handler from the target element.
+			@param {Element} target
+				The target element.
+			@param {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+			@param {Function} handler(event)
+				The function to be removed.
+
+		MyQuery.trigger(target, eventType) : MyQuery
+			Execute all handlers and behaviors attached to the target element for the given event type.
+			@param {DOMElement} target
+				The target element.
+			@param {String} eventType
+				The name of a DOM event type, such as "click", or a custom event name.
+	Ajax
+		MyQuery.ajax(options) : XMLHttpRequest
+			Perform an (a)synchronous HTTP (Ajax) request.
+			@params {Object} options
+				Options for ajax.
+
+		MyQuery.comet(options) : XMLHttpRequest
+			Perform an reversed (a)synchronous HTTP (Ajax) request.
+			@params {Object} options
+				Options for ajax.
+
+		MyQuery.serialize(form) : String
+			Encode a set of form elements as a string for submission.
+			@params {Form} form
+				A form element.
+
+		MyQuery.createXHR() : XMLHttpRequest
+			Perform an (a)synchronous HTTP (Ajax) request.

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>MyQuery Test</title>
+		<style>
+		/*<![CDATA[*/
+		a {
+			color: #0ff;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		th, td {
+			border: 1px solid silver;
+		}
+
+		/*]]>*/
+		</style>
+	</head>
+
+	<body>
+		<h1>MyQuery Test</h1>
+		<h2>Event Bubbling Test</h2>
+		<p>Click on the table to test event bubbling...</p>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Stop bubbling</th>
+					<th>Prevent default action</th>
+					<th>Prevent "same element" event handlers</th>
+				</tr>
+			</thead>
+			<tfoot></tfoot>
+			<tbody>
+				<tr>
+					<th>return false</th>
+					<td>√</td>
+					<td>√</td>
+					<td>×</td>
+				</tr>
+				<tr>
+					<th>event.preventDefault()</th>
+					<td>×</td>
+					<td>√</td>
+					<td>×</td>
+				</tr>
+				<tr>
+					<th>event.stopPropagation()</th>
+					<td>√</td>
+					<td>×</td>
+					<td>×</td>
+				</tr>
+				<tr>
+					<th>event.stopImmediatePropagation()</th>
+					<td>√</td>
+					<td>×</td>
+					<td>√</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>DOMContentLoaded Event Test</h2>
+		<script src="myquery.js"></script>
+		<script>
+		//<![CDATA[
+		$.ready(function () {
+			$("<p>").html((new Date()).toString() + ": DOMContentLoaded 1 triggered.").appendTo(document.body);
+		});
+		$.ready(function () {
+			$("<p>").html((new Date()).toString() + ": DOMContentLoaded 2 triggered.").appendTo(document.body);
+		});
+		$.ready(function () {
+			$("<p>").html((new Date()).toString() + ": DOMContentLoaded 3 triggered.").appendTo(document.body);
+			$.ready(function () {
+				$("<p>").html((new Date()).toString() + ": Invoked from DOMContentLoaded 3.").appendTo(document.body);
+			});
+		});
+		window.onload = function () {
+			$("<p>").html((new Date()).toString() + ": Window.onload triggered.").appendTo(document.body);
+		};
+
+		$("table, thead, tbody, tr, th, td").bind("click", function (event) {
+			alert("Event bubbing test:\n\nSource Target: " + event.target.nodeName + "\nCurrent Target: " + this.nodeName);
+		});
+		//]]>
+		</script>
+	</body>
+</html>
